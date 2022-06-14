@@ -1,5 +1,6 @@
+import axios from "axios";
 
-function From() {
+function Form() {
     function onFormSumbit(event) {
         event.preventDefault();
 
@@ -12,7 +13,9 @@ function From() {
 
         //Better way
         const formData = new FormData(event.target);
-        alert(`${formData.get('first_name')} ${formData.get('last_name')} ${formData.get('address')} ${formData.get('age')}`)
+        // alert(`${formData.get('first_name')} ${formData.get('last_name')} ${formData.get('address')} ${formData.get('age')}`)
+        axios.post(`https://dvd1-d3625-default-rtdb.firebaseio.com/people.json`, Object.formEntries(formData.entries()));
+
     }
     return (
         <div className="From" onSubmit={onFormSumbit}>
@@ -37,4 +40,4 @@ function From() {
         </div>
     )
 }
-export default From;
+export default Form;
